@@ -92,7 +92,7 @@ Indeed, molecules for example do not contain the same number of nodes and edges.
 - A major concept in graph analysis is the Neigborhood, as every node are influenced by their neighborhood nodes and the relation between them. Consider the local structures alongside the global structure is key to obtain a good analysis. The information on the neigborhood of each node can be obtained by transforming the input graph from its general form to a form where each node has a value from a function that takes as input the node itself and its neighborhood. Here is an example, where $X_{Nb}$ is the set of nodes connected to the node $X_b$ : 
 
 <p align="center">
-<img src="images/report_imgs/neigb.png" alt="Image Alt Text" width="350"/>
+<img src="assets/report_imgs/neigb.png" alt="Image Alt Text" width="350"/>
 </p>
 
 
@@ -128,7 +128,7 @@ When creating a Graph Neural Network, one must choose the type of layers to use 
 - First, Graph Convolutionnal layers take fixed weights determined by the neigborhood nodes and edges. Here is an illustration, where each node $i$ sends a fixed weight $c_{bi}$ :
 
 <p align="center">
-<img src="images/report_imgs/gcnconv.png" alt="Image Alt Text" width="300"/>
+<img src="assets/report_imgs/gcnconv.png" alt="Image Alt Text" width="300"/>
 </p>
 
 Here, the value given to the the node by the layer is given by the following function : 
@@ -142,7 +142,7 @@ The $φ$ and $ψ$ operators being activation functions, such as sigmoid or ReLU.
 - Then, Graph Attentionnal layers take as weights from the attention given to each part of the neighborhood. Attention in deep learning refers to the process of giving higher importance to some parts of the input compared to other parts. In fact, the weights applied to the nodes are computed from the relation between the 'central' node and its neighbor, so that the kind of relation actually matters. Here is an illustration to sum it up : 
 
 <p align="center">
-<img src="images/report_imgs/attention.png" alt="Image Alt Text" width="300"/>
+<img src="assets/report_imgs/attention.png" alt="Image Alt Text" width="300"/>
 </p>
 
 So that the value given to each node differs only with the weights used, that are functions of two nodes now :
@@ -154,7 +154,7 @@ $$
 - Another type of layer is Message Passing layer, where 'message' vectors replace the multiplication of weights and an activated value of the neighborhood node, like the following : 
 
 <p align="center">
-<img src="images/report_imgs/mp.png" alt="Image Alt Text" width="300"/>
+<img src="assets/report_imgs/mp.png" alt="Image Alt Text" width="300"/>
 </p>
 
 The value set at each node is 
@@ -218,13 +218,13 @@ with :
 
 The constrained solubility is usually used as an indicator of solubility of the molecule, and a measure of how drug-like a molecule is. Our task will be to predict this property using Graph Neural Networks.
 
-You can find a general Data Exploration here : [Data_Exploration.ipynb](Data_Exploration.ipynb)
+You can find a general Data Exploration here : [data_exploration.ipynb](data_exploration.ipynb)
 
 Here are two boxplots showing the distribution of our target variable, the second one not displaying extreme values in the data :
 
 <p align="center">
-<img src="images/report_imgs/boxes_w_outliers.png" alt="Image Alt Text" width="400"/>
-<img src="images/report_imgs/boxes_logp.png" alt="Image Alt Text" width="400"/>
+<img src="assets/report_imgs/boxes_w_outliers.png" alt="Image Alt Text" width="400"/>
+<img src="assets/report_imgs/boxes_logp.png" alt="Image Alt Text" width="400"/>
 </p>
 
 We can see that the majority of the graphs take values between -4 and 4. However, there is a subsequent number of outliers taking extremely low values below -20. For the training phase, we removed from the data the graphs with values under -10 for generalization purposes.
@@ -232,7 +232,7 @@ We can see that the majority of the graphs take values between -4 and 4. However
 Then, using the package *networkx*, we are able to obtain a visual representation of our molecule graphs : 
 
 <p align="center">
-<img src="images/report_imgs/graph_ex.png" alt="Image Alt Text" width="400"/>
+<img src="assets/report_imgs/graph_ex.png" alt="Image Alt Text" width="400"/>
 </p>
 
 We can clearly see the structure of our molecule, with its nodes and edges.
@@ -240,7 +240,7 @@ We can clearly see the structure of our molecule, with its nodes and edges.
 An interesting thing to see with these vizualisitations is the  variability of the representation for a same graph, like in the following example : 
 
 <p align="center">
-<img src="images/report_imgs/graph01.png" alt="Image Alt Text" width="500"/>
+<img src="assets/report_imgs/graph01.png" alt="Image Alt Text" width="500"/>
 </p>
 
 If you look closely, you can see that these two plots show the exact same graph, with the same number of nodes and identical edges. However, the representation is completely different. This illustrates the visual representations of graphs property that we talked about above.
@@ -292,7 +292,7 @@ $$
 Here is the scheme of the Network I used : 
 
 <p align="center">
-<img src="images/report_imgs/archi_gnn.png" alt="Image Alt Text" width="550"/>
+<img src="assets/report_imgs/archi_gnn.png" alt="Image Alt Text" width="550"/>
 </p>
 
 For the configuration of the Training phase :
@@ -326,14 +326,14 @@ $$
 Here is the evolution of the losses during training : 
 
 <p align="center">
-<img src="images/report_imgs/losses_evol.png" alt="Image Alt Text" width="400"/>
+<img src="assets/report_imgs/losses_evol.png" alt="Image Alt Text" width="400"/>
 </p>
 
 We see that we managed to avoid any overfiting of the data since training and validation losses remain close to each other. Also, we note that the improvement was important at the beginning of the process, and it became quite slow from 40 epochs.
 
 The training phase took around 45 minutes to complete, using the colab GPU.
 
-You can find the work that has been done with this GNN architecture here : [GNN.ipynb](GNN.ipynb)
+You can find the work that has been done with this GNN architecture here : [gnn.ipynb](gnn.ipynb)
 
 ## III - Graph Transformer Implementation
 
@@ -407,7 +407,7 @@ I thus had to, first choose an embedding size, 72, and then apply this size to e
 Here is a schema of the created network, with the use of different heads illustrated.
 
 <p align="center">
-<img src="images/report_imgs/archi_transformer.png" alt="Image Alt Text" width="550"/>
+<img src="assets/report_imgs/archi_transformer.png" alt="Image Alt Text" width="550"/>
 </p>
 
 At each TransformerConv layer, there are 4 sets of 72 elements computed, because we chose to use 4 heads.
@@ -435,7 +435,7 @@ For the configuration of the Training phase, the same parameters than with the G
 Here is the evolution of the losses during training : 
 
 <p align="center">
-<img src="images/report_imgs/transformer_losses.png" alt="Image Alt Text" width="400"/>
+<img src="assets/report_imgs/transformer_losses.png" alt="Image Alt Text" width="400"/>
 </p>
 
 Here also, we managed to keep our training phase relatively stable, even if there are some peaks in validations losses. 
@@ -444,7 +444,7 @@ The training phase took around 60 minutes to complete, using the colab GPU.
 
 Concerning the results, we see that we managed to slighlty improve our results from our GNN model. However, the difference is thin and I believe that the model can be optmized as a next step, perhaps by trying to find other configuration parameters and architecture more suited to this regression task, and that it can be done as a next step for this project.
 
-You can find the work that has been done with this GNN architecture here : [Graph_Transformer.ipynb](Graph_Transformer.ipynb)
+You can find the work that has been done with this GNN architecture here : [graph_transformer.ipynb](graph_transformer.ipynb)
 
 ## Conclusion
 

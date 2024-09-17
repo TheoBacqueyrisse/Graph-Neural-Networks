@@ -1,7 +1,7 @@
-# graph-neural-networks
+# Graph Neural Networks
 
 <p align="center">
-<img src="images/molecule_bing.jpeg" alt="Alt Text" width = "800">
+<img src="assets/molecule_banner.png" alt="Alt Text" width = "1500">
 </p>
 
 
@@ -34,7 +34,7 @@ This property is a common indicator of how medicinal a molecule is.
 ## GNN Architecture
 
 <p align="center">
-<img src="images/report_imgs/archi_gnn.png" alt="Alt Text" width = "650">
+<img src="assets/report_imgs/archi_gnn.png" alt="Alt Text" width = "650">
 </p>
 
 Results with 100 epochs :
@@ -46,7 +46,7 @@ Results with 100 epochs :
 ## Transformer Architecture
 
 <p align="center">
-<img src="images/report_imgs/archi_transformer.png" alt="Alt Text" width = "650">
+<img src="assets/report_imgs/archi_transformer.png" alt="Alt Text" width = "650">
 </p>
 
 Results with 100 epochs :
